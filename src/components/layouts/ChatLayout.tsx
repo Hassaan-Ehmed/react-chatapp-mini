@@ -5,6 +5,7 @@ import type { User, Chat, Message } from '@/types';
 import { Button } from "@/components/ui/button";
 import { Bell, ChevronRight, Mic, UserPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 interface ChatLayoutProps {
   currentUser: User;
@@ -23,8 +24,9 @@ export function ChatLayout({ currentUser, chats, messages, onShowSettings , onSh
       {/* Sidebar */}
       <div className="flex h-full w-full max-w-sm flex-col border-r md:w-80">
         <div className="flex items-center justify-between border-b p-4 bg-gradient-to-r from-[#859398] to-[#283048]">
+        <Link to={'/settings'}>
           <button
-            onClick={onShowSettings}
+
             className="flex items-center space-x-2 rounded-lg p-2 "
           >
             <img
@@ -34,12 +36,16 @@ export function ChatLayout({ currentUser, chats, messages, onShowSettings , onSh
             />  
             <span className="font-medium text-white">{currentUser.name}</span>
           </button>
+          </Link>
           <div className='motion-preset-seesaw'>
 
+            <Link to={'/explore'}>
 
-            <Button variant="outline" size="icon" className='mr-2' onClick={onShowExplorePage}>
+            <Button variant="outline" size="icon" className='mr-2' >
+            
             <UserPlus  />
         </Button>
+            </Link>
             <Button variant="outline" size="icon" className='relative'>
             <Bell  className=''/>
              <span className={cn("absolute top-0 right-0 w-3 h-3 rounded-full border-2 border-background", "bg-red-500" )} />

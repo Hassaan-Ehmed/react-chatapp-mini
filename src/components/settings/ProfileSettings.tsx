@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import type { User } from '@/types';
 import { ChevronLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ProfileSettingsProps {
   user: User;
@@ -25,10 +26,15 @@ export function ProfileSettings({ user, onSave }: ProfileSettingsProps) {
   return (
     <form onSubmit={handleSubmit}>
       <Card>
-      <Button variant="outline" size="sm" className='m-2'>
-    <ChevronLeft color="#000000"  onClick={handleSubmit}/>
-</Button>
+    <Link to={'/chat'} >
+      <Button variant="link" size="icon" className='m-3'>
+      <ChevronLeft color="#000000" />
+      </Button>
+    </Link>
+
         <CardHeader>
+
+ 
 
           <CardTitle>Profile Settings</CardTitle>
         </CardHeader>

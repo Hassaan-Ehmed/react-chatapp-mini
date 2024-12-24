@@ -4,16 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import type { User } from '@/types';
-import { Ban, Bell, Check, ChevronLeft, Search, UserPlus, X} from 'lucide-react';
-
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-
-} from "lucide-react"
+import { Ban,  ChevronLeft, Search, UserPlus, X} from 'lucide-react';
 
 import {
   Command,
@@ -22,11 +13,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
 import { cn } from '@/lib/utils';
 import { exploreImage } from '@/data/mockData';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -49,9 +41,11 @@ export function AddFriend({ user, onSave }: AddFriend) {
   return (
     <form>
       <Card className=''>
-      <Button variant="outline" size="sm" className='m-3'>
-    <ChevronLeft color="#000000"  onClick={handleSubmit}/>
+    <Link to={'/chat'} >
+      <Button variant="link" size="icon" className='m-3'>
+    <ChevronLeft color="#000000" />
 </Button>
+    </Link>
         <CardHeader>
           <CardTitle>Explore new people</CardTitle>
         </CardHeader>
