@@ -16,7 +16,7 @@ export function SigninForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-        FormChecks(email,password,signup); // solid principle will apply here !!
+        FormChecks(email,password,"signin"); // solid principle will apply here !!
     // onSubmit({ email, password, ...(mode === 'signup' ? { name } : {}) });
   };
 

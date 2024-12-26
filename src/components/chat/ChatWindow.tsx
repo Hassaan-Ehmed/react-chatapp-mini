@@ -35,7 +35,7 @@ export function ChatWindow({ messages, currentUser, otherUser, onSendMessage, on
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-gradient-to-r from-[#859398] to-[#283048]">
+    <div className="flex h-full w-full flex-col ">
       <div className="flex items-center border-b p-4 bg-white">
         {onBack && (
           <Button

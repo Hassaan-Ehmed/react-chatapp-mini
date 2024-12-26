@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Search } from 'lucide-react';
+import { CirclePlus, Search } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from '@/lib/utils';
 import type { Chat } from '@/types';
+import { Button } from '../ui/button';
 
 interface ChatListProps {
   chats: Chat[];
@@ -25,7 +26,7 @@ export function ChatList({ chats, selectedChatId, onChatSelect }: ChatListProps)
     <div className="flex flex-col h-full border-r ">
       <div className="p-4">
         <div className="relative">
-          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground focus:outline outline-[#00d65d]" />
           <Input
             placeholder="Search chats..."
             className="pl-9"
@@ -34,9 +35,16 @@ export function ChatList({ chats, selectedChatId, onChatSelect }: ChatListProps)
           />
         </div>
       </div>
-      <ScrollArea className="flex-1">
-        <div className="space-y-2 p-2">
-          {filteredChats.map((chat) => {
+      <ScrollArea className="flex-1  flex justify-center items-center">
+        <div className=""> 
+          {/* space-y-2 p-2 */}
+
+        <div className="text-1xl font-bold tracking-tighter flex h- w-full  justify-center items-center absolute bottom-10  ">
+
+        <Button  className='bg-white hover:bg-white text-[#00d65d] shadow-lg'>Start new chat &nbsp; <CirclePlus color="#00d65d"  /></Button>
+        </div>
+
+          {/* {filteredChats.map((chat) => {
             const otherParticipant = chat.participants[1]; // Assuming current user is always first
             return (
               <button
@@ -84,7 +92,7 @@ export function ChatList({ chats, selectedChatId, onChatSelect }: ChatListProps)
                 )}
               </button>
             );
-          })}
+          })} */}
         </div>
       </ScrollArea>
     </div>

@@ -1,4 +1,4 @@
-import { createNewUser } from "@/firebase/MsgHelperFunctions";
+import { createNewUser, SigninExsistinguser } from "@/firebase/MsgHelperFunctions";
 
 export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
@@ -8,7 +8,7 @@ export const validateRegex =  (email:string,password:string,whichPurpose:string)
 
     if(email.trim() !== "" && emailRegex.test(email)){
 
-      if(password.trim() !== "" && (password.length >= 5 && password.length <= 25)){
+      if(password.trim() !== "" && (password.length >= 6 && password.length <= 25)){
             
           console.log("here we go...",{
             email,
@@ -22,12 +22,12 @@ export const validateRegex =  (email:string,password:string,whichPurpose:string)
             break;
 
             case "signin": 
-            createNewUser(email,password);
+            SigninExsistinguser(email,password);
             break;
         }
 
       }else{
-        console.log("Password length must be in 5 to 25 characters long");return
+        console.log("Password length must be in 6 to 25 characters long");return
       }
   }else{
     console.log("please provide email in correct format");return;

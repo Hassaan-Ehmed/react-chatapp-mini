@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router , Routes ,  Route } from 'react-router-dom'
 import Chat from './pages/Chat';
-import Signin from './pages/SignIn';
+import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Settings from './pages/Settings';
 import Explore from './pages/Explore';

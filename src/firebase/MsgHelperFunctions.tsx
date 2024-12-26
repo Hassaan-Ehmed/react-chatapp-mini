@@ -1,7 +1,6 @@
 import React from 'react'
-import {createUserWithEmailAndPassword , getAuth , updateProfile} from 'firebase/auth'
-import { auth, db } from './firebaseConfig'
-import { Navigate } from 'react-router-dom';
+import {createUserWithEmailAndPassword , getAuth , updateProfile , signInWithEmailAndPassword} from 'firebase/auth'
+import { auth } from './firebaseConfig'
 
 
 
@@ -10,7 +9,8 @@ export const updateUserObj = async (userId:string,userPacket:any)=>{
     const auth = getAuth();
  
     updateProfile(auth?.currentUser as any,{
-        displayName:`${auth.currentUser?.email?.split("@")[0]}:${userId}`
+        displayName:`${auth.currentUser?.email?.split("@")[0]}:${userId}DN`,
+
     }).then(()=>{
         
         console.log("Profile Updated Successfully!");
@@ -20,9 +20,28 @@ export const updateUserObj = async (userId:string,userPacket:any)=>{
 }
 
 
-export const SigninExsistinguser =()=>{
+export const SigninExsistinguser = (email:string,password:string)=>{
+
+    signInWithEmailAndPassword(auth,email,password).then((cred)=>{
+
+        // console.log("User Logged In!",cred);
+        
+        window.location.replace('/chat'); // redirect user on  chat page
+
+        
+    }).catch((error)=>{
+
+        if(error.message === "Firebase: Error (auth/email-already-in-use)."){
+            console.log("User Already Exisit!");
+        }else{
+            console.log("Error while creating user!",error);
+        }
+    })
 
 } 
+
+
+
 export const createNewUser =  (email:string,password:string)=>{
 
     createUserWithEmailAndPassword(auth,email,password).then((cred)=>{
